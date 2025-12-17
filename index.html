@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c34a0420aba8ea02f0ef3e3e2d312bc7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<script>
+    var props = [{"addr": "3560 Bassett St, Santa Clara", "avail": "No", "sqft": 75376, "rent": 2234144, "power": 2494, "lat": 37.3849851, "lon": -121.9525562}, {"addr": "1140 Ringwood Ct, San Jose", "avail": "No", "sqft": 52440, "rent": 1717934, "power": 1663, "lat": 37.39153, "lon": -121.8926946}, {"addr": "6550 Dumbarton Cir, Fremont", "avail": "No", "sqft": 36477, "rent": 1860327, "power": 2660, "lat": 37.550074, "lon": -122.057889}, {"addr": "301 Toland St, San Francisco", "avail": "No", "sqft": 36338, "rent": 1373576, "power": 1663, "lat": 37.745202, "lon": -122.397616}, {"addr": "181 Constitution Dr, Menlo Park", "avail": "Yes", "sqft": 44723, "rent": 2076936, "power": 2162, "lat": 37.4839183, "lon": -122.1719145}, {"addr": "1180 OBrien Dr, Menlo Park", "avail": "", "sqft": 13555, "rent": 666906, "power": 432, "lat": 37.474634, "lon": -122.1469652}, {"addr": "4045 Campbell Ave, Menlo Park", "avail": "", "sqft": 65839, "rent": 3144471, "power": 1663, "lat": 37.4803208, "lon": -122.1815923}, {"addr": "610 Quarry Road, San Carlos", "avail": "", "sqft": 62464, "rent": 2173747, "power": 2494, "lat": 37.5166688, "lon": -122.2680531}, {"addr": "1411 Industrial Rd, San Carlos", "avail": "No", "sqft": 29811, "rent": 1448815, "power": 998, "lat": 37.500656, "lon": -122.2444193}, {"addr": "2197 E Bayshore Rd, Palo Alto", "avail": "No", "sqft": 23000, "rent": 1393800, "power": 1663, "lat": 37.4504925, "lon": -122.1230153}, {"addr": "821 San Antonio Rd, Palo Alto", "avail": "", "sqft": 10240, "rent": 491520, "power": 998, "lat": 37.4243773, "lon": -122.1014463}, {"addr": "3995 Bayshore Rd, Palo Alto", "avail": "", "sqft": 34000, "rent": 1632000, "power": 686, "lat": 37.4298624, "lon": -122.1015267}, {"addr": "195 Page Mill Rd, Palo Alto", "avail": "", "sqft": 10796, "rent": 913342, "power": 216, "lat": 37.4264022, "lon": -122.1389959}, {"addr": "130-150 Shoreline Dr, Redwood City", "avail": "", "sqft": 54000, "rent": 2980800, "power": 1663, "lat": 37.52428, "lon": -122.2530225}, {"addr": "1089 Mills Way, Redwood City", "avail": "", "sqft": 105248, "rent": 6693773, "power": 1663, "lat": 37.487415, "lon": -122.2087669}, {"addr": "1205 Veterans Blvd, Redwood City", "avail": "", "sqft": 25000, "rent": 1272000, "power": 584, "lat": 37.4898718, "lon": -122.2210793}, {"addr": "201 Ravendale Dr, Mountain View", "avail": "", "sqft": 53591, "rent": 3697779, "power": 2078, "lat": 37.3888013, "lon": -122.0547158}, {"addr": "777 E Middlefield Rd, Mountain View", "avail": "", "sqft": 59251, "rent": 4088319, "power": 2078, "lat": 37.3905669, "lon": -122.0491398}, {"addr": "82 Pioneer Way, Mountain View", "avail": "No", "sqft": 34985, "rent": 1931172, "power": 1663, "lat": 37.3893728, "lon": -122.0671244}, {"addr": "440 N Bernardo Ave, Mountain View", "avail": "No", "sqft": 27790, "rent": 1637387, "power": 1330, "lat": 37.3901608, "lon": -122.0484811}, {"addr": "1070 Terra Bella Ave, Mountain View", "avail": "", "sqft": 14948, "rent": 708535, "power": 831, "lat": 37.4087724, "lon": -122.0747793}, {"addr": "1215 Terra Bella Ave, Mountain View", "avail": "", "sqft": 12861, "rent": 788637, "power": 748, "lat": 37.4081989, "lon": -122.0788687}, {"addr": "345 E Middlefield Rd, Mountain View", "avail": "", "sqft": 15850, "rent": 989040, "power": 305, "lat": 37.3963159, "lon": -122.0583689}, {"addr": "990 Villa St, Mountain View", "avail": "", "sqft": 17677, "rent": 1132433, "power": 288, "lat": 37.3947689, "lon": -122.080965}, {"addr": "825 E Middlefield Rd, Mountain View", "avail": "", "sqft": 47081, "rent": 2774013, "power": 288, "lat": 37.3899971, "lon": -122.0479949}, {"addr": "415 Oakmead Pkwy, Sunnyvale", "avail": "", "sqft": 60517, "rent": 3417156, "power": 2078, "lat": 37.381224, "lon": -121.9880139}, {"addr": "680 W Maude Ave, Sunnyvale", "avail": "No", "sqft": 39311, "rent": 2250162, "power": 1663, "lat": 37.3908578, "lon": -122.033662}, {"addr": "970 Stewart Dr, Sunnyvale", "avail": "Yes", "sqft": 53600, "rent": 2733600, "power": 1330, "lat": 37.3825152, "lon": -122.0033895}, {"addr": "330 Potrero Ave, Sunnyvale", "avail": "Yes", "sqft": 35654, "rent": 2224810, "power": 973, "lat": 37.3865196, "lon": -122.0376812}, {"addr": "305 N Mathilda Ave, Sunnyvale", "avail": "", "sqft": 33355, "rent": 2181417, "power": 721, "lat": 37.3851054, "lon": -122.0324343}, {"addr": "447 Indio Way, Sunnyvale", "avail": "", "sqft": 19105, "rent": 939966, "power": 457, "lat": 37.3865258, "lon": -122.0326138}, {"addr": "535 Oakmead Pkwy, Sunnyvale", "avail": "", "sqft": 54479, "rent": 2124681, "power": 0, "lat": 37.3848299, "lon": -121.9884532}, {"addr": "3030 Corvin Dr, Santa Clara", "avail": "No", "sqft": 40491, "rent": 2429460, "power": 4506, "lat": 37.3763291, "lon": -121.9879683}, {"addr": "3301 Olcott St, Santa Clara", "avail": "No", "sqft": 46886, "rent": 1716028, "power": 2078, "lat": 37.3796932, "lon": -121.9670811}, {"addr": "1705 Wyatt Dr, Santa Clara", "avail": "No", "sqft": 33306, "rent": 1234986, "power": 1829, "lat": 37.3897987, "lon": -121.9575938}, {"addr": "1600 Memorex Dr, Santa Clara", "avail": "No", "sqft": 70000, "rent": 1209600, "power": 1496, "lat": 37.363158, "lon": -121.955042}, {"addr": "3520 Bassett St, Santa Clara", "avail": "No", "sqft": 22683, "rent": 617885, "power": 1330, "lat": 37.383878, "lon": -121.9518141}, {"addr": "150 Nortech Pkwy, San Jose", "avail": "No", "sqft": 40420, "rent": 1556978, "power": 1330, "lat": 37.423062, "lon": -121.9550749}, {"addr": "233 S Hillview Dr, Milpitas", "avail": "No", "sqft": 60482, "rent": 1887038, "power": 6651, "lat": 37.4288309, "lon": -121.8925716}, {"addr": "677 Gibraltar Ct, Milpitas", "avail": "No", "sqft": 49662, "rent": 1489860, "power": 3326, "lat": 37.4220094, "lon": -121.8957023}, {"addr": "48664 Milmont Dr, Fremont", "avail": "No", "sqft": 68503, "rent": 2441447, "power": 4988, "lat": 37.4644271, "lon": -121.9211309}, {"addr": "3481 W Warren Ave, Fremont", "avail": "No", "sqft": 79181, "rent": 2441942, "power": 2245, "lat": 37.4814789, "lon": -121.9430444}, {"addr": "7200 Gateway Blvd, Newark", "avail": "No", "sqft": 68489, "rent": 2013577, "power": 1663, "lat": 37.5403702, "lon": -122.061302}, {"addr": "25375 Clawiter Rd, Hayward", "avail": "No", "sqft": 99395, "rent": 2266206, "power": 3326, "lat": 37.6360078, "lon": -122.1198537}, {"addr": "175 Sylvester Rd, South SF", "avail": "No", "sqft": 74562, "rent": 2192123, "power": 3326, "lat": 37.6526245, "lon": -122.40476}, {"addr": "1635 Rollins Rd, Burlingame", "avail": "Yes", "sqft": 56899, "rent": 1741109, "power": 3326, "lat": 37.5943397, "lon": -122.37503}, {"addr": "101 Utah St, SF", "avail": "", "sqft": 67000, "rent": 3149000, "power": 3326, "lat": 37.7677967, "lon": -122.4063139}, {"addr": "570 Eccles Ave, South SF", "avail": "No", "sqft": 73442, "rent": 2159195, "power": 1663, "lat": 37.6614586, "lon": -122.389765}, {"addr": "250 Hillside Blvd, South SF", "avail": "No", "sqft": 29800, "rent": 607920, "power": 1330, "lat": 37.663401, "lon": -122.408381}, {"addr": "1755 Rollins Rd, Burlingame", "avail": "No", "sqft": 83791, "rent": 1628897, "power": 998, "lat": 37.5966758, "lon": -122.3788898}, {"addr": "111 Pine Ave, South SF", "avail": "", "sqft": 14087, "rent": 515584, "power": 998, "lat": 37.6583288, "lon": -122.4061313}, {"addr": "111 South Maple Ave, South SF", "avail": "Yes", "sqft": 27355, "rent": 968367, "power": 998, "lat": 37.6500401, "lon": -122.4141468}, {"addr": "845 Stanton Rd, Burlingame", "avail": "", "sqft": 25000, "rent": 855000, "power": 665, "lat": 37.5990496, "lon": -122.3700232}, {"addr": "453 Forbes Blvd, South SF", "avail": "", "sqft": 40606, "rent": 1919852, "power": 576, "lat": 37.656729, "lon": -122.394738}, {"addr": "835 Ingold Rd, Burlingame", "avail": "", "sqft": 57300, "rent": 1306440, "power": 288, "lat": 37.5958155, "lon": -122.3774715}];
+    var markers = [];
+
+    window.onload = function() {
+        var mapInstance = window.map_c34a0420aba8ea02f0ef3e3e2d312bc7;
+        
+        // --- ADD MARKERS ---
+        props.forEach(function(p) {
+            var availText = p.avail ? p.avail : "Unknown";
+            
+            var marker = L.circleMarker([p.lat, p.lon], {
+                color: '#333',
+                fillColor: '#999',
+                fillOpacity: 0.8,
+                radius: 8,
+                weight: 1
+            }).bindPopup(
+                "<b>" + p.addr + "</b><br>" +
+                "Liked/Avail: <b>" + availText + "</b><br><hr>" +
+                "Size: " + p.sqft.toLocaleString() + " sqft<br>" +
+                "Rent: $" + p.rent.toLocaleString() + "<br>" +
+                "Power: " + p.power + " kW"
+            );
+            
+            marker.addTo(mapInstance);
+            marker.data = p;
+            markers.push(marker);
+        });
+        
+        // --- 1. RESPONSIVE CONTROL PANEL (Top Right) ---
+        var controlDiv = document.createElement('div');
+        controlDiv.innerHTML = `
+            <div style="background:white; padding:15px; border:2px solid #666; border-radius:8px; 
+                        width: 25vw; min-width: 250px; max-width: 400px;
+                        box-shadow: 5px 5px 15px rgba(0,0,0,0.3); font-family: sans-serif;">
+                <h3 style="margin-top:0; text-align:center;">Property Filter</h3>
+                
+                <b>Min Power: <span id="lbl_p" style="color:blue">1200</span> kW</b><br>
+                <input type="range" id="sl_p" min="0" max="7000" step="100" value="1200" style="width:100%"><br><br>
+                
+                <b>Min Size: <span id="lbl_s" style="color:blue">35,000</span> sqft</b><br>
+                <input type="range" id="sl_s" min="0" max="110000" step="1000" value="35000" style="width:100%"><br><br>
+                
+                <b>Max Rent: $<span id="lbl_r" style="color:blue">2.5M</span></b><br>
+                <input type="range" id="sl_r" min="0" max="7000000" step="100000" value="2500000" style="width:100%">
+                
+                <hr>
+                <div style="font-size:1.2em; line-height:1.5em;">
+                    <span style="color:green; font-weight:bold; font-size:1.2em;">●</span> Matches & Liked<br>
+                    <span style="color:#FFFF00; font-weight:bold; font-size:1.2em; text-shadow: 1px 1px 1px #444;">●</span> Matches but Rejected<br>
+                    <span style="color:red; font-weight:bold; font-size:1.2em;">●</span> Fails Specs<br>
+                    <span style="color:#4169e1; font-weight:bold; font-size:1.2em;">●</span> Caltrain Station
+                </div>
+            </div>
+        `;
+        
+        var info = L.control({position: 'topright'});
+        info.onAdd = function (map) {
+            L.DomEvent.disableClickPropagation(controlDiv);
+            L.DomEvent.disableScrollPropagation(controlDiv);
+            return controlDiv;
+        };
+        info.addTo(mapInstance);
+
+        // --- 2. RESPONSIVE PROPERTY TABLE (Bottom Left - FIXED HEADER) ---
+        var tableDiv = document.createElement('div');
+        tableDiv.innerHTML = `
+            <div style="background:white; border:2px solid #666; border-radius:8px; 
+                        width: 32vw; min-width: 300px; height: 35vh; 
+                        display: flex; flex-direction: column;
+                        box-shadow: 5px 5px 15px rgba(0,0,0,0.3); 
+                        font-family: sans-serif; font-size:14px; overflow: hidden;">
+                
+                <div style="padding: 10px; border-bottom: 1px solid #ccc; background: white; z-index: 2;">
+                    <h4 style="margin: 0; text-align: center;">Matching Properties (Sorted by Rent)</h4>
+                </div>
+
+                <div style="overflow-y: auto; flex-grow: 1;">
+                    <table id="propTable" style="width:100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="text-align:left;">
+                                <th style="position: sticky; top: 0; background: #eee; padding: 6px; z-index: 1; border-bottom: 2px solid #aaa;">Address</th>
+                                <th style="position: sticky; top: 0; background: #eee; padding: 6px; z-index: 1; border-bottom: 2px solid #aaa;">City</th>
+                                <th style="position: sticky; top: 0; background: #eee; padding: 6px; z-index: 1; border-bottom: 2px solid #aaa;">Rent ($/yr)</th>
+                                <th style="position: sticky; top: 0; background: #eee; padding: 6px; z-index: 1; border-bottom: 2px solid #aaa;">Pwr (kW)</th>
+                                <th style="position: sticky; top: 0; background: #eee; padding: 6px; z-index: 1; border-bottom: 2px solid #aaa;">Size (sqft)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+
+        var tableControl = L.control({position: 'bottomleft'});
+        tableControl.onAdd = function (map) {
+            L.DomEvent.disableClickPropagation(tableDiv);
+            L.DomEvent.disableScrollPropagation(tableDiv);
+            return tableDiv;
+        };
+        tableControl.addTo(mapInstance);
+        
+        // --- 3. CLICK HANDLER ---
+        function highlightMarker(addr) {
+            var target = markers.find(m => m.data.addr === addr);
+            if (target) {
+                mapInstance.panTo(target.getLatLng());
+                target.openPopup();
+                var rows = document.querySelectorAll("#propTable tr");
+                rows.forEach(r => r.style.border = "none");
+            }
+        }
+
+        // --- UPDATE LOGIC ---
+        function update() {
+            var mp = parseInt(document.getElementById('sl_p').value);
+            var ms = parseInt(document.getElementById('sl_s').value);
+            var mr = parseInt(document.getElementById('sl_r').value);
+            
+            document.getElementById('lbl_p').innerText = mp;
+            document.getElementById('lbl_s').innerText = ms.toLocaleString();
+            document.getElementById('lbl_r').innerText = (mr/1000000).toFixed(1) + "M";
+            
+            var tbody = document.querySelector('#propTable tbody');
+            tbody.innerHTML = "";
+
+            var tableRows = [];
+
+            markers.forEach(function(m) {
+                var p = m.data;
+                var meetsSpecs = (p.power >= mp && p.sqft >= ms && p.rent <= mr);
+                
+                if (!meetsSpecs) {
+                    m.setStyle({color: '#8b0000', fillColor: '#ff0000', fillOpacity: 0.6});
+                } 
+                else if (p.avail === "No") {
+                    m.setStyle({color: '#000000', weight: 1, fillColor: '#FFFF00', fillOpacity: 1.0});
+                } 
+                else {
+                    m.setStyle({color: '#006400', fillColor: '#00ff00', fillOpacity: 0.9});
+                }
+
+                if (meetsSpecs) {
+                    tableRows.push(p);
+                }
+            });
+
+            tableRows.sort(function(a, b) {
+                return b.rent - a.rent;
+            });
+
+            tableRows.forEach(function(p) {
+                var row = document.createElement("tr");
+                row.style.cursor = "pointer";
+                
+                if (p.avail === "No") {
+                    row.style.backgroundColor = "#FFFFE0";
+                } else {
+                    row.style.backgroundColor = "#E0FFE0";
+                }
+                
+                row.onclick = function() {
+                    var allRows = document.querySelectorAll("#propTable tr");
+                    allRows.forEach(r => r.style.border = "none");
+                    this.style.border = "2px solid black";
+                    highlightMarker(p.addr);
+                };
+
+                var parts = p.addr.split(',');
+                var street = parts[0];
+                var city = parts[1] ? parts[1].trim() : "";
+
+                row.innerHTML = `
+                    <td style="padding:6px; border-bottom:1px solid #ddd;">${street}</td>
+                    <td style="padding:6px; border-bottom:1px solid #ddd;">${city}</td>
+                    <td style="padding:6px; border-bottom:1px solid #ddd;">$${(p.rent/1000000).toFixed(2)}M</td>
+                    <td style="padding:6px; border-bottom:1px solid #ddd;">${p.power}</td>
+                    <td style="padding:6px; border-bottom:1px solid #ddd;">${(p.sqft/1000).toFixed(0)}k</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        document.getElementById('sl_p').addEventListener('input', update);
+        document.getElementById('sl_s').addEventListener('input', update);
+        document.getElementById('sl_r').addEventListener('input', update);
+        
+        update();
+    };
+</script>
+    
+            <div class="folium-map" id="map_c34a0420aba8ea02f0ef3e3e2d312bc7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c34a0420aba8ea02f0ef3e3e2d312bc7 = L.map(
+                "map_c34a0420aba8ea02f0ef3e3e2d312bc7",
+                {
+                    center: [37.49, -122.2],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_90491ed39c9aeba051dd5c4948259984 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_90491ed39c9aeba051dd5c4948259984.addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+            var circle_marker_23b5cd4589c793ff88ceccb767c3d6e6 = L.circleMarker(
+                [37.7576, -122.3923],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_270f8fa86f9b8a0313ded09b9a0c578d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_246d533c7073ef5e70d29d920c977e28 = $(`<div id="html_246d533c7073ef5e70d29d920c977e28" style="width: 100.0%; height: 100.0%;"><b>22nd St Station (Dogpatch)</b></div>`)[0];
+                popup_270f8fa86f9b8a0313ded09b9a0c578d.setContent(html_246d533c7073ef5e70d29d920c977e28);
+            
+        
+
+        circle_marker_23b5cd4589c793ff88ceccb767c3d6e6.bindPopup(popup_270f8fa86f9b8a0313ded09b9a0c578d)
+        ;
+
+        
+    
+    
+            circle_marker_23b5cd4589c793ff88ceccb767c3d6e6.bindTooltip(
+                `<div>
+                     22nd St Station (Dogpatch)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_de0f9a6443f2b80cfbe5a23fc3eb8089 = L.circleMarker(
+                [37.6564, -122.4061],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_e327ce2cc1916ff8a13dce0461ffe7b7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8063df13a5cc9e32ebb1c34264075570 = $(`<div id="html_8063df13a5cc9e32ebb1c34264075570" style="width: 100.0%; height: 100.0%;"><b>South SF Station</b></div>`)[0];
+                popup_e327ce2cc1916ff8a13dce0461ffe7b7.setContent(html_8063df13a5cc9e32ebb1c34264075570);
+            
+        
+
+        circle_marker_de0f9a6443f2b80cfbe5a23fc3eb8089.bindPopup(popup_e327ce2cc1916ff8a13dce0461ffe7b7)
+        ;
+
+        
+    
+    
+            circle_marker_de0f9a6443f2b80cfbe5a23fc3eb8089.bindTooltip(
+                `<div>
+                     South SF Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_15cb54a209b8be90239d7a740cd0e75a = L.circleMarker(
+                [37.6306, -122.4116],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_632b0e045cc66faa9ae489fb132789dc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b66a2255cb7bf0cbf09729d27774f2d6 = $(`<div id="html_b66a2255cb7bf0cbf09729d27774f2d6" style="width: 100.0%; height: 100.0%;"><b>San Bruno Station</b></div>`)[0];
+                popup_632b0e045cc66faa9ae489fb132789dc.setContent(html_b66a2255cb7bf0cbf09729d27774f2d6);
+            
+        
+
+        circle_marker_15cb54a209b8be90239d7a740cd0e75a.bindPopup(popup_632b0e045cc66faa9ae489fb132789dc)
+        ;
+
+        
+    
+    
+            circle_marker_15cb54a209b8be90239d7a740cd0e75a.bindTooltip(
+                `<div>
+                     San Bruno Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d922d95982a799bb873d93df5a932434 = L.circleMarker(
+                [37.5999, -122.3863],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_d9b10d81d273bf305eac2d2f0e7ab230 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3a8e7c48f95b6593078728dd436f2e9a = $(`<div id="html_3a8e7c48f95b6593078728dd436f2e9a" style="width: 100.0%; height: 100.0%;"><b>Millbrae Station</b></div>`)[0];
+                popup_d9b10d81d273bf305eac2d2f0e7ab230.setContent(html_3a8e7c48f95b6593078728dd436f2e9a);
+            
+        
+
+        circle_marker_d922d95982a799bb873d93df5a932434.bindPopup(popup_d9b10d81d273bf305eac2d2f0e7ab230)
+        ;
+
+        
+    
+    
+            circle_marker_d922d95982a799bb873d93df5a932434.bindTooltip(
+                `<div>
+                     Millbrae Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_80df15c001ea18b5cb8a67806696be5c = L.circleMarker(
+                [37.5796, -122.3459],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_0d32d054f7e5ab42a42ebb8c79c0568b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_430c94778463476811073b31d8c86e32 = $(`<div id="html_430c94778463476811073b31d8c86e32" style="width: 100.0%; height: 100.0%;"><b>Burlingame Station</b></div>`)[0];
+                popup_0d32d054f7e5ab42a42ebb8c79c0568b.setContent(html_430c94778463476811073b31d8c86e32);
+            
+        
+
+        circle_marker_80df15c001ea18b5cb8a67806696be5c.bindPopup(popup_0d32d054f7e5ab42a42ebb8c79c0568b)
+        ;
+
+        
+    
+    
+            circle_marker_80df15c001ea18b5cb8a67806696be5c.bindTooltip(
+                `<div>
+                     Burlingame Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a20c86da9535b979407332608e04351d = L.circleMarker(
+                [37.5684, -122.324],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_bb79c4c96f8226cfdce4edab091bb250 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee857817a7799c3260b3ffaeeb3b696b = $(`<div id="html_ee857817a7799c3260b3ffaeeb3b696b" style="width: 100.0%; height: 100.0%;"><b>San Mateo Station</b></div>`)[0];
+                popup_bb79c4c96f8226cfdce4edab091bb250.setContent(html_ee857817a7799c3260b3ffaeeb3b696b);
+            
+        
+
+        circle_marker_a20c86da9535b979407332608e04351d.bindPopup(popup_bb79c4c96f8226cfdce4edab091bb250)
+        ;
+
+        
+    
+    
+            circle_marker_a20c86da9535b979407332608e04351d.bindTooltip(
+                `<div>
+                     San Mateo Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_73794d16937eabdf6fff52134bebac55 = L.circleMarker(
+                [37.5516, -122.31],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_474c7d750fefc4dc5f85e2d0061f0fcd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8d64bd4aaf318aa6c6e67f8ba2e37eb4 = $(`<div id="html_8d64bd4aaf318aa6c6e67f8ba2e37eb4" style="width: 100.0%; height: 100.0%;"><b>Hayward Park Station</b></div>`)[0];
+                popup_474c7d750fefc4dc5f85e2d0061f0fcd.setContent(html_8d64bd4aaf318aa6c6e67f8ba2e37eb4);
+            
+        
+
+        circle_marker_73794d16937eabdf6fff52134bebac55.bindPopup(popup_474c7d750fefc4dc5f85e2d0061f0fcd)
+        ;
+
+        
+    
+    
+            circle_marker_73794d16937eabdf6fff52134bebac55.bindTooltip(
+                `<div>
+                     Hayward Park Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4756b008390f52e5c0e6455121ce5c1e = L.circleMarker(
+                [37.5376, -122.298],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_9ae1db86141a7c67013e77b1a1277b0c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_15e490439512f83faf0dbafba2cc614f = $(`<div id="html_15e490439512f83faf0dbafba2cc614f" style="width: 100.0%; height: 100.0%;"><b>Hillsdale Station</b></div>`)[0];
+                popup_9ae1db86141a7c67013e77b1a1277b0c.setContent(html_15e490439512f83faf0dbafba2cc614f);
+            
+        
+
+        circle_marker_4756b008390f52e5c0e6455121ce5c1e.bindPopup(popup_9ae1db86141a7c67013e77b1a1277b0c)
+        ;
+
+        
+    
+    
+            circle_marker_4756b008390f52e5c0e6455121ce5c1e.bindTooltip(
+                `<div>
+                     Hillsdale Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cdefca52a2175e506f13e53d846e4cb2 = L.circleMarker(
+                [37.5215, -122.2765],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_58f236e966687e605891d62996848297 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fa70e10cf68b977867b935bbb7f20e80 = $(`<div id="html_fa70e10cf68b977867b935bbb7f20e80" style="width: 100.0%; height: 100.0%;"><b>Belmont Station</b></div>`)[0];
+                popup_58f236e966687e605891d62996848297.setContent(html_fa70e10cf68b977867b935bbb7f20e80);
+            
+        
+
+        circle_marker_cdefca52a2175e506f13e53d846e4cb2.bindPopup(popup_58f236e966687e605891d62996848297)
+        ;
+
+        
+    
+    
+            circle_marker_cdefca52a2175e506f13e53d846e4cb2.bindTooltip(
+                `<div>
+                     Belmont Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ae2d66df86e2217459ac63501131a46f = L.circleMarker(
+                [37.5074, -122.2605],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_4e137303cdc0c9f0a9ecd4577609d482 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_686d209b705325438d23cdda64d842ec = $(`<div id="html_686d209b705325438d23cdda64d842ec" style="width: 100.0%; height: 100.0%;"><b>San Carlos Station</b></div>`)[0];
+                popup_4e137303cdc0c9f0a9ecd4577609d482.setContent(html_686d209b705325438d23cdda64d842ec);
+            
+        
+
+        circle_marker_ae2d66df86e2217459ac63501131a46f.bindPopup(popup_4e137303cdc0c9f0a9ecd4577609d482)
+        ;
+
+        
+    
+    
+            circle_marker_ae2d66df86e2217459ac63501131a46f.bindTooltip(
+                `<div>
+                     San Carlos Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e91882f4ee8fe963db9fef6f928bf8e0 = L.circleMarker(
+                [37.4862, -122.2321],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_f88464d9757ba78390f22f59a3be0ce3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_88b0382524c484d26366edee0fabb450 = $(`<div id="html_88b0382524c484d26366edee0fabb450" style="width: 100.0%; height: 100.0%;"><b>Redwood City Station</b></div>`)[0];
+                popup_f88464d9757ba78390f22f59a3be0ce3.setContent(html_88b0382524c484d26366edee0fabb450);
+            
+        
+
+        circle_marker_e91882f4ee8fe963db9fef6f928bf8e0.bindPopup(popup_f88464d9757ba78390f22f59a3be0ce3)
+        ;
+
+        
+    
+    
+            circle_marker_e91882f4ee8fe963db9fef6f928bf8e0.bindTooltip(
+                `<div>
+                     Redwood City Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a2f7c50549cdf117b2469452ceb772c0 = L.circleMarker(
+                [37.4546, -122.1825],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_54221f3575710690bd4b843893432c15 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9370b82075388d35e7fd5ee57d7f29dd = $(`<div id="html_9370b82075388d35e7fd5ee57d7f29dd" style="width: 100.0%; height: 100.0%;"><b>Menlo Park Station</b></div>`)[0];
+                popup_54221f3575710690bd4b843893432c15.setContent(html_9370b82075388d35e7fd5ee57d7f29dd);
+            
+        
+
+        circle_marker_a2f7c50549cdf117b2469452ceb772c0.bindPopup(popup_54221f3575710690bd4b843893432c15)
+        ;
+
+        
+    
+    
+            circle_marker_a2f7c50549cdf117b2469452ceb772c0.bindTooltip(
+                `<div>
+                     Menlo Park Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1b77c0666dc776d06ea94542ff8d755b = L.circleMarker(
+                [37.443, -122.1649],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_55e0967e2ca7b287a739748535ff46a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0caae6a13abd7e44fd13ed7da92d8cc0 = $(`<div id="html_0caae6a13abd7e44fd13ed7da92d8cc0" style="width: 100.0%; height: 100.0%;"><b>Palo Alto Station</b></div>`)[0];
+                popup_55e0967e2ca7b287a739748535ff46a4.setContent(html_0caae6a13abd7e44fd13ed7da92d8cc0);
+            
+        
+
+        circle_marker_1b77c0666dc776d06ea94542ff8d755b.bindPopup(popup_55e0967e2ca7b287a739748535ff46a4)
+        ;
+
+        
+    
+    
+            circle_marker_1b77c0666dc776d06ea94542ff8d755b.bindTooltip(
+                `<div>
+                     Palo Alto Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6ca264b51eb7a41b0b7a8d28dea118f1 = L.circleMarker(
+                [37.429, -122.1419],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_79931c3fffbdfe3e4e077ae6f9220ff9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cc46ad8b411e3778a1757f6e1b64d24e = $(`<div id="html_cc46ad8b411e3778a1757f6e1b64d24e" style="width: 100.0%; height: 100.0%;"><b>California Ave Station</b></div>`)[0];
+                popup_79931c3fffbdfe3e4e077ae6f9220ff9.setContent(html_cc46ad8b411e3778a1757f6e1b64d24e);
+            
+        
+
+        circle_marker_6ca264b51eb7a41b0b7a8d28dea118f1.bindPopup(popup_79931c3fffbdfe3e4e077ae6f9220ff9)
+        ;
+
+        
+    
+    
+            circle_marker_6ca264b51eb7a41b0b7a8d28dea118f1.bindTooltip(
+                `<div>
+                     California Ave Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b9c4953d3006dfea5c7892ad3a27d75f = L.circleMarker(
+                [37.4072, -122.1071],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_2bd8a90b917ec53c58c2ad36b908eb1f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_66ef75e23a5c9992f625dfe6511244e8 = $(`<div id="html_66ef75e23a5c9992f625dfe6511244e8" style="width: 100.0%; height: 100.0%;"><b>San Antonio Station</b></div>`)[0];
+                popup_2bd8a90b917ec53c58c2ad36b908eb1f.setContent(html_66ef75e23a5c9992f625dfe6511244e8);
+            
+        
+
+        circle_marker_b9c4953d3006dfea5c7892ad3a27d75f.bindPopup(popup_2bd8a90b917ec53c58c2ad36b908eb1f)
+        ;
+
+        
+    
+    
+            circle_marker_b9c4953d3006dfea5c7892ad3a27d75f.bindTooltip(
+                `<div>
+                     San Antonio Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_595c75f0a068ba33f2756ede45b5e518 = L.circleMarker(
+                [37.3945, -122.076],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_96fe2303b6fa669ef254391221e290a6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f646ed2a1d14e6e697a222c560b3cc24 = $(`<div id="html_f646ed2a1d14e6e697a222c560b3cc24" style="width: 100.0%; height: 100.0%;"><b>Mountain View Station</b></div>`)[0];
+                popup_96fe2303b6fa669ef254391221e290a6.setContent(html_f646ed2a1d14e6e697a222c560b3cc24);
+            
+        
+
+        circle_marker_595c75f0a068ba33f2756ede45b5e518.bindPopup(popup_96fe2303b6fa669ef254391221e290a6)
+        ;
+
+        
+    
+    
+            circle_marker_595c75f0a068ba33f2756ede45b5e518.bindTooltip(
+                `<div>
+                     Mountain View Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b73e8e6b13794f8f2d0de8a407629177 = L.circleMarker(
+                [37.3784, -122.0307],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_99b1cdfa6a0802415851015fca8e7320 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dccb89e4bcf020f6bc7287f17d84b541 = $(`<div id="html_dccb89e4bcf020f6bc7287f17d84b541" style="width: 100.0%; height: 100.0%;"><b>Sunnyvale Station</b></div>`)[0];
+                popup_99b1cdfa6a0802415851015fca8e7320.setContent(html_dccb89e4bcf020f6bc7287f17d84b541);
+            
+        
+
+        circle_marker_b73e8e6b13794f8f2d0de8a407629177.bindPopup(popup_99b1cdfa6a0802415851015fca8e7320)
+        ;
+
+        
+    
+    
+            circle_marker_b73e8e6b13794f8f2d0de8a407629177.bindTooltip(
+                `<div>
+                     Sunnyvale Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b7cc0a05b7f266503a55ef63eeb79591 = L.circleMarker(
+                [37.3704, -121.9961],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_405ea1bd906db0cf3376b6d7cdbdf771 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fbbd5c95416d02d8d13b282f111d91f2 = $(`<div id="html_fbbd5c95416d02d8d13b282f111d91f2" style="width: 100.0%; height: 100.0%;"><b>Lawrence Station</b></div>`)[0];
+                popup_405ea1bd906db0cf3376b6d7cdbdf771.setContent(html_fbbd5c95416d02d8d13b282f111d91f2);
+            
+        
+
+        circle_marker_b7cc0a05b7f266503a55ef63eeb79591.bindPopup(popup_405ea1bd906db0cf3376b6d7cdbdf771)
+        ;
+
+        
+    
+    
+            circle_marker_b7cc0a05b7f266503a55ef63eeb79591.bindTooltip(
+                `<div>
+                     Lawrence Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_394278ac85440b067a732c4a65963ad1 = L.circleMarker(
+                [37.3532, -121.9366],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_92c23ed1514bf328aca1d2da18150035 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e34c8c9916878108a6756a8bb6bd3eb4 = $(`<div id="html_e34c8c9916878108a6756a8bb6bd3eb4" style="width: 100.0%; height: 100.0%;"><b>Santa Clara Station</b></div>`)[0];
+                popup_92c23ed1514bf328aca1d2da18150035.setContent(html_e34c8c9916878108a6756a8bb6bd3eb4);
+            
+        
+
+        circle_marker_394278ac85440b067a732c4a65963ad1.bindPopup(popup_92c23ed1514bf328aca1d2da18150035)
+        ;
+
+        
+    
+    
+            circle_marker_394278ac85440b067a732c4a65963ad1.bindTooltip(
+                `<div>
+                     Santa Clara Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f1fa42ee44d8bf81dcb7279a4dde1a64 = L.circleMarker(
+                [37.3326, -121.9031],
+                {"bubblingMouseEvents": true, "color": "#00008b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4169e1", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c34a0420aba8ea02f0ef3e3e2d312bc7);
+        
+    
+        var popup_227f697113e39a680a7fd00bd167b657 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c1dbd633e5727e0ff2492b7bb54c912 = $(`<div id="html_2c1dbd633e5727e0ff2492b7bb54c912" style="width: 100.0%; height: 100.0%;"><b>San Jose Diridon</b></div>`)[0];
+                popup_227f697113e39a680a7fd00bd167b657.setContent(html_2c1dbd633e5727e0ff2492b7bb54c912);
+            
+        
+
+        circle_marker_f1fa42ee44d8bf81dcb7279a4dde1a64.bindPopup(popup_227f697113e39a680a7fd00bd167b657)
+        ;
+
+        
+    
+    
+            circle_marker_f1fa42ee44d8bf81dcb7279a4dde1a64.bindTooltip(
+                `<div>
+                     San Jose Diridon
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
